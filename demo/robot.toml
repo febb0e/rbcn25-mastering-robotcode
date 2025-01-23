@@ -1,0 +1,16 @@
+[variables]
+web_app_url = "localhost"
+
+[profiles.dev.extend-variables]
+browser = "firefox"
+port = "3000"
+
+[profiles.test.extend-variables]
+browser = "chromium"
+port = "3001"
+
+[profiles.headless.extend-variables]
+headless = "True"
+
+[profiles.headfull.extend-variables]
+headless = "False"

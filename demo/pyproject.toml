@@ -7,7 +7,7 @@ name = "example"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 license = "MIT"
 keywords = []
 authors = [
@@ -24,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["robotframework", "robotframework-browser", "flask"]
+dependencies = ["robotframework", "robotframework-browser"]
 
 [project.urls]
 Documentation = "https://github.com/Fabian Tsirogiannis/example#readme"
@@ -71,6 +71,7 @@ dependencies = ["robotframework-tidy", "robotframework-robocop"]
 post-install-commands = [
   "rfbrowser init",
   "npm install pm2@latest -g",
+  "cd web/vite-example && npm install"
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -78,6 +79,8 @@ robot = "python3 -m robot --outputdir=reports {args:tests}"
 start-server = "echo starting server"
 init-something = "hatch run scripts/init-something.py"
 run-tests = ["init-something", "start-server", "robot"]
-start-webapp-1 = ['pm2 start "FLASK_APP=./flask/webapp_1.py FLASK_ENV=development flask run -p 5000"']
-start-webapp-2 = ['pm2 start "FLASK_APP=./flask/webapp_2.py FLASK_ENV=development flask run -p 5001"']
-start-webapps = ["start-webapp-1", "start-webapp-2"]
+pm2-status = ["hatch run pm2 status"]
+start-todo-app-test = ['hatch run pm2 start "VITE_ENVIRONMENT=Test npm run dev --prefix web/vite-example" --name Test']
+start-todo-app-dev = ['hatch run pm2 start "VITE_ENVIRONMENT=Development npm run dev --prefix web/vite-example" --name Dev']
+start-webapps = ["start-todo-app-test", "start-todo-app-dev"]
+stop-webapps = ["hatch run pm2 delete all", "pm2 status"]

@@ -1,9 +1,0 @@
-.mypy_cache
-.ruff_cache
-
-reports/
-
-node_modules
-
-package-lock.json
-package.json
