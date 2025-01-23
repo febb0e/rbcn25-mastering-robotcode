@@ -1,0 +1,83 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "example"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Fabian Tsirogiannis", email = "fabian.tsirogiannis@imbus.de" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["robotframework", "robotframework-browser", "flask"]
+
+[project.urls]
+Documentation = "https://github.com/Fabian Tsirogiannis/example#readme"
+Issues = "https://github.com/Fabian Tsirogiannis/example/issues"
+Source = "https://github.com/Fabian Tsirogiannis/example"
+
+[tool.hatch.version]
+path = "src/example/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check-mypy = "mypy --install-types --non-interactive {args:src/example tests}"
+check-robotidy = "robotidy --check {args: .}"
+check-robocop = "robocop {args: .}"
+check = ["check-mypy", "check-robotidy", "check-robocop"]
+
+[tool.coverage.run]
+source_pkgs = ["example", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/example/__about__.py",
+]
+
+[tool.coverage.paths]
+example = ["src/example", "*/example/src/example"]
+tests = ["tests", "*/example/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/example"]
+
+[tool.hatch.envs.default]
+dependencies = ["robotframework-tidy", "robotframework-robocop"]
+post-install-commands = [
+  "rfbrowser init",
+  "npm install pm2@latest -g",
+]
+
+[tool.hatch.envs.default.scripts]
+robot = "python3 -m robot --outputdir=reports {args:tests}"
+start-server = "echo starting server"
+init-something = "hatch run scripts/init-something.py"
+run-tests = ["init-something", "start-server", "robot"]
+start-webapp-1 = ['pm2 start "FLASK_APP=./flask/webapp_1.py FLASK_ENV=development flask run -p 5000"']
+start-webapp-2 = ['pm2 start "FLASK_APP=./flask/webapp_2.py FLASK_ENV=development flask run -p 5001"']
+start-webapps = ["start-webapp-1", "start-webapp-2"]
