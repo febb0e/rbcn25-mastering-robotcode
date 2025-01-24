@@ -50,7 +50,6 @@ Mark Todo As Done
 Verify Todo Is Done
     [Documentation]    Changes into the done view and checks todo is done
     Click    a[href="#/done"]
-
     ${done_text}    Get Text    //div[@id="${TODO_ID}"]//span
     Should Be Equal    ${done_text}   ${TODO}
 
