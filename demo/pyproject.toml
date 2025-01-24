@@ -71,7 +71,7 @@ dependencies = ["robotframework-tidy", "robotframework-robocop"]
 post-install-commands = [
   "rfbrowser init",
   "npm install pm2@latest -g",
-  "cd web/vite-example && npm install"
+  "cd todo-app && npm install"
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -80,7 +80,7 @@ start-server = "echo starting server"
 init-something = "hatch run scripts/init-something.py"
 run-tests = ["init-something", "start-server", "robot"]
 pm2-status = ["hatch run pm2 status"]
-start-todo-app-test = ['hatch run pm2 start "VITE_ENVIRONMENT=Test npm run dev --prefix web/vite-example" --name Test']
-start-todo-app-dev = ['hatch run pm2 start "VITE_ENVIRONMENT=Development npm run dev --prefix web/vite-example" --name Dev']
-start-webapps = ["start-todo-app-test", "start-todo-app-dev"]
+start-todo-app-test = ['hatch run pm2 start "VITE_ENVIRONMENT=Test npm run dev --prefix todo-app" --name Test']
+start-todo-app-dev = ['hatch run pm2 start "VITE_ENVIRONMENT=Development npm run dev --prefix todo-app" --name Dev']
+start-webapps = ["stop-webapps", "start-todo-app-test", "start-todo-app-dev"]
 stop-webapps = ["hatch run pm2 delete all", "pm2 status"]
