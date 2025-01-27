@@ -1,0 +1,92 @@
+name: Run Robotframework Demo Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'demo/**'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Build job preparing the environment and dependencies
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install Playwright Browser Dependencies
+        run: npx plawright install-deps
+      - name: Setup python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Setup Hatch
+        run: pipx install hatch
+
+  # Test Job running robotframework tests
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Check for Changes in demo/ Directory
+        id: check_changes
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -q '^demo/'; then
+            echo "changes=true" >> $GITHUB_ENV
+          else
+            echo "changes=false" >> $GITHUB_ENV
+      - name: Create Hatch Environment
+        run: hatch env create
+      - name: Deploy Webapps
+        run: hatch run start-webapps
+      - name: Run Test Cases
+        run: hatch run robotcode -p ci robot
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robotframework-results
+          path: reports
+
+  # Deploying test results to github pages
+  publish-test-results:
+    needs: test
+    runs-on: ubuntu-latest
+
+    if: always()
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Upload Robotframework Results
+        uses: actions/upload-artifact@v4
+        if: always() 
+        with:
+          name: robotframework-results
+          path: reports
+          retention-days: 7
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_PAT: ${{ secrets.GHP_TOKEN }}
+        run: |
+          mkdir -p public/reports
+          cp -r artifacts/* public/reports
+          touch public/.nojekyll
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public
+          git commit -m 'Deploy test results to GitHub Pages'
+          git push origin HEAD:gh-pages
