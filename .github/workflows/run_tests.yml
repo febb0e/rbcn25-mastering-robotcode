@@ -69,12 +69,15 @@ jobs:
           name: robotframework-results
           path: artifacts
 
+      - name: List Downloaded Artifacts
+        run: ls -R artifacts
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Deploy to GitHub Pages
         env:
-          GH_PAT: ${{ secrets.GHP_TOKEN }}
+          GHP_TOKEN: ${{ secrets.GHP_TOKEN }}
         run: |
           mkdir -p public/reports
           cp artifacts/reports/report.html public/reports
@@ -83,4 +86,4 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add public
           git commit -m 'Deploy test results to GitHub Pages'
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }} HEAD:gh-pages
+          git push https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} HEAD:gh-pages
