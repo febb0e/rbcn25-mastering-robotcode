@@ -14,3 +14,8 @@ headless = "True"
 
 [profiles.headfull.extend-variables]
 headless = "False"
+
+[profiles.ci.extend-variables]
+browser = "firefox"
+port = "3000"
+headless = "True"
