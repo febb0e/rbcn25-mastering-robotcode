@@ -78,7 +78,6 @@ jobs:
         env:
           GHP_TOKEN: ${{ secrets.GHP_TOKEN }}
         run: |
-          rm -rf public
           mkdir -p public/reports
           cp artifacts/** public/reports/          
           touch public/.nojekyll
