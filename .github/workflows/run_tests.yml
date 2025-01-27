@@ -83,6 +83,7 @@ jobs:
           touch public/.nojekyll
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull --rebase https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} gh-pages || git rebase --abort
           git add public
           git commit -m 'Deploy test results to GitHub Pages'
           git push https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} HEAD:gh-pages
