@@ -76,9 +76,10 @@ The workshop combines lectures, live demonstrations, and hands-on exercises.
 
 ## Authors
 
-- Daniel Biehl: https://github.com/d-biehl
-- Fabian Tsirogiannis: https://github.com/febb0e
+- [Daniel Biehl](https://github.com/d-biehl)
+- [Fabian Tsirogiannis](https://github.com/febb0e)
 
 ## Links
 
 [RobotCode](https://github.com/robotcodedev/robotcode)
+[Github Pages Reports](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/)
