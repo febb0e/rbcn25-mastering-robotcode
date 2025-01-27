@@ -86,5 +86,4 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add public
           git commit -m 'Deploy test results to GitHub Pages'
-          git pull --rebase https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} gh-pages || git rebase --abort
-          git push https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} HEAD:gh-pages
+          git push --force https://x-access-token:${GHP_TOKEN}@github.com/${{ github.repository }} HEAD:gh-pages
