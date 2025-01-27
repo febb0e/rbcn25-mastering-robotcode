@@ -40,6 +40,7 @@ Add Todo To List
 
 Verify Todo Exists
     [Documentation]    Verifies Todo is existant
+    Take Screenshot
     ${todo_text}    Get Text    //div[@id="${TODO_ID}"]//span
     Should Be Equal    ${todo_text}    ${TODO}
 
@@ -50,6 +51,7 @@ Mark Todo As Done
 Verify Todo Is Done
     [Documentation]    Changes into the done view and checks todo is done
     Click    a[href="#/done"]
+    Take Screenshot
     ${done_text}    Get Text    //div[@id="${TODO_ID}"]//span
     Should Be Equal    ${done_text}   ${TODO}
 
@@ -59,4 +61,5 @@ Delete Done Element
 
 Verify Element Is Deleted
     [Documentation]    Verifies the deleted element
+    Take Screenshot
     Get Element Count    //div[@id="${TODO_ID}"]    ==    0
