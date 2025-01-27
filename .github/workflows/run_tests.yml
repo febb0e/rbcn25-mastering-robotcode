@@ -77,7 +77,7 @@ jobs:
           GH_PAT: ${{ secrets.GHP_TOKEN }}
         run: |
           mkdir -p public/reports
-          cp -r artifacts/reports/report.html public/reports
+          cp artifacts/reports/report.html public/reports
           touch public/.nojekyll
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
