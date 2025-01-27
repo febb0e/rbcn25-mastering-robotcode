@@ -82,4 +82,5 @@ The workshop combines lectures, live demonstrations, and hands-on exercises.
 ## Links
 
 [RobotCode](https://github.com/robotcodedev/robotcode)
-[Github Pages Reports](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/)
+[Robotframework Report](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/report.html)
+[Robotframework Log](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/log.html)
