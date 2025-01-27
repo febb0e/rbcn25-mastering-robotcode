@@ -69,9 +69,6 @@ jobs:
           name: robotframework-results
           path: artifacts
 
-      - name: List Downloaded Artifacts
-        run: ls -R artifacts
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
