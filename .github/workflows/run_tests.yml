@@ -81,7 +81,7 @@ jobs:
           rm -rf public
           mkdir -p public/reports
           cp artifacts/report.html public/reports/index.html
-          cp artifacts/log.html public/reports/          
+          cp -r artifacts/** public/reports/          
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add public
