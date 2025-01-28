@@ -57,7 +57,7 @@ Check Development Environment Color
 Verify Url Navigation
     [Documentation]    Verifies the functionality of the url navigation
     Open Todo App
-    Verify Url Ends With    todo
+    Wait Until Keyword Succeeds    5s    500ms    Verify Url Ends With    todo
     Click    a[href="#/done"]
     Wait Until Keyword Succeeds    5s    500ms    Verify Url Ends With    done
 
@@ -94,7 +94,6 @@ Open Todo App
     [Documentation]    Opens the webapp on localhost
     New Browser    ${BROWSER}    ${HEADLESS}
     New Page    ${WEB_APP_URL}:${PORT}
-    Wait For Load State
 
 Check App Title
     [Documentation]    Checks the app title against the expected value
