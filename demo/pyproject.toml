@@ -44,25 +44,6 @@ check-robotidy = "robotidy --check {args: .}"
 check-robocop = "robocop {args: .}"
 check = ["check-mypy", "check-robotidy", "check-robocop"]
 
-[tool.coverage.run]
-source_pkgs = ["example", "tests"]
-branch = true
-parallel = true
-omit = [
-  "src/example/__about__.py",
-]
-
-[tool.coverage.paths]
-example = ["src/example", "*/example/src/example"]
-tests = ["tests", "*/example/tests"]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
-
 [tool.hatch.build.targets.wheel]
 packages = ["src/example"]
 
