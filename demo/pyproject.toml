@@ -27,9 +27,9 @@ classifiers = [
 dependencies = ["robotframework", "robotframework-browser", "robotcode[ALL]"]
 
 [project.urls]
-Documentation = "https://github.com/Fabian Tsirogiannis/example#readme"
-Issues = "https://github.com/Fabian Tsirogiannis/example/issues"
-Source = "https://github.com/Fabian Tsirogiannis/example"
+Documentation = "https://github.com/febb0e/rbcn25-mastering-robotcode/blob/main/README.md"
+Issues = "https://github.com/febb0e/rbcn25-mastering-robotcode/issues"
+Source = "https://github.com/febb0e/rbcn25-mastering-robotcode"
 
 [tool.hatch.version]
 path = "src/example/__about__.py"
