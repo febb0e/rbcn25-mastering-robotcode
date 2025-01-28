@@ -2,7 +2,7 @@
   <div
     class="max-w-screen-sm mx-8 sm:mx-auto mt-8 border rounded-lg overflow-hidden"
   >
-    <div :class="['text-white text-center py-2', environmentColor]">
+    <div id="environment" :class="['text-white text-center py-2', environmentColor]">
       {{ environment }} Environment
     </div>
     <div class="bg-green-500 px-6 py-4 text-white flex justify-between">
