@@ -59,6 +59,7 @@ Verify Url Navigation
     Open Todo App
     Verify Url Ends With    todo
     Click    a[href="#/done"]
+    Wait For Load State
     Verify Url Ends With    done
 
 Add And Delete Single Todo
