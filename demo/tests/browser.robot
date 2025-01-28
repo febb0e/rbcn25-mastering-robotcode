@@ -59,8 +59,7 @@ Verify Url Navigation
     Open Todo App
     Verify Url Ends With    todo
     Click    a[href="#/done"]
-    Wait For Load State
-    Verify Url Ends With    done
+    Wait Until Keyword Succeeds    5s    500ms    Verify Url Ends With    done
 
 Add And Delete Single Todo
     [Documentation]    Tests the creation and deletion of a single todo in the app
