@@ -45,7 +45,7 @@ jobs:
         working-directory: demo
 
       - name: Run Test Cases
-        run: hatch run robotcode -p ci robot --outputdir=reports tests/browser.robot
+        run: hatch run robotcode -p ci-dev robot --outputdir=reports tests/browser.robot
         working-directory: demo
 
       - name: Upload Test Results
