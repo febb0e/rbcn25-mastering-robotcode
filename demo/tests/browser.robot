@@ -20,36 +20,42 @@ ${TODO_ID}=         ${0}
 *** Test Cases ***
 Check App Title Test Environment
     [Documentation]    Verifies the app title for the test environment
+    [Tags]    test-env    app-title
     VAR    ${PORT}=    3000    scope=SUITE    # noqa
     Open Todo App
     Check App Title    Test: Todo App
 
 Check App Title Development Environment
     [Documentation]    Verifies the app title for the test environment
+    [Tags]    dev-env    app-title
     VAR    ${PORT}=    3001    scope=SUITE    # noqa
     Open Todo App
     Check App Title    Development: Todo App
 
 Check Test Environment Header
     [Documentation]    Checks if the web app is in the test environment
+    [Tags]    test-env    env-header
     VAR    ${PORT}=    3000    scope=SUITE    # noqa
     Open Todo App
     Check Header Environment    Test Environment
 
 Check Development Environment Header
     [Documentation]    Checks if the web app is in the development environment
+    [Tags]    dev-env    env-header
     VAR    ${PORT}=    3001    scope=SUITE    # noqa
     Open Todo App
     Check Header Environment    Development Environment
 
 Check Test Environment Color
     [Documentation]    Checks the color of the header in test environment
+    [Tags]    test-env    color
     VAR    ${PORT}=    3000    scope=SUITE    # noqa
     Open Todo App
     Check Header Color    bg-red-400
 
 Check Development Environment Color
     [Documentation]    Checks the color of the header in development environment
+    [Tags]    dev-env    color
     VAR    ${PORT}=    3001    scope=SUITE    # noqa
     Open Todo App
     Check Header Color    bg-blue-400
@@ -63,6 +69,7 @@ Verify Url Navigation
 
 Add And Delete Single Todo
     [Documentation]    Tests the creation and deletion of a single todo in the app
+    [Tags]    regression
     VAR    @{todos}    Hold Robocon Workshop
     Open Todo App
     Add Todos To List              @{todos}
@@ -74,6 +81,7 @@ Add And Delete Single Todo
 
 Add And Delete Multiple Todos
     [Documentation]    Tests the creation and deletion of multiple todos in the app
+    [Tags]    regression
     VAR    @{todos}    Charge Laptop
     ...    Install VSCode
     ...    Get To Know Robotcode
