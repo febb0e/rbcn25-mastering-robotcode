@@ -39,19 +39,11 @@ jobs:
         with:
           python-version: "3.12.8"
 
-      - name: Setup Hatch
+      - name: Install Hatch
         run: pipx install hatch
 
-      - name: Create Hatch Environment
-        run: hatch env create
-        working-directory: ${{ env.PROJECT_DIR }}
-
-      - name: Deploy Webapps
-        run: hatch run start-webapps
-        working-directory: ${{ env.PROJECT_DIR }}
-
       - name: Run Test Cases
-        run: hatch run robotcode robot -p ci --outputdir=${{ env.REPORTS_DIR }}
+        run: hatch run run-tests-ci
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Upload Test Results
