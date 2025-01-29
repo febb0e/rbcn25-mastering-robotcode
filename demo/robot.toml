@@ -1,26 +1,78 @@
+paths = ["."]
+
 [variables]
-web_app_url = "localhost"
+WEB_APP_URL = "localhost"
 
-[profiles.test.extend-variables]
-browser = "firefox"
-port = "3000"
+[profiles.webkit.extend-variables]
+BROWSER = "webkit"
 
-[profiles.dev.extend-variables]
-browser = "chromium"
-port = "3001"
+[profiles.firefox.extend-variables]
+BROWSER = "firefox"
+
+[profiles.chromium.extend-variables]
+BROWSER = "chromium"
+
+[profiles.test-env.extend-variables]
+PORT = "3000"
+
+[profiles.dev-env.extend-variables]
+PORT = "3001"
 
 [profiles.headless.extend-variables]
-headless = "True"
+HEADLESS = "True"
 
 [profiles.headfull.extend-variables]
-headless = "False"
+HEADLESS = "False"
 
-[profiles.ci-test.extend-variables]
-browser = "firefox"
-port = "3000"
-headless = "True"
+[profiles.webkit]
+hidden = true
 
-[profiles.ci-dev.extend-variables]
-browser = "webkit"
-port = "3001"
-headless = "True"
+[profiles.firefox]
+hidden = true
+
+[profiles.chromium]
+hidden = true
+
+[profiles.test-env]
+hidden = true
+
+[profiles.dev-env]
+hidden = true
+
+[profiles.headless]
+hidden = true
+
+[profiles.headfull]
+hidden = true
+
+[profiles.regression]
+description = "headfull regression tests"
+inherits = ["dev-env", "headfull"]
+includes = ["regression"]
+
+[profiles.local-test]
+description = "headfull run on test env with firefox"
+inherits = ["test-env", "firefox", "headfull"]
+excludes = ["dev-env"]
+
+[profiles.local-dev]
+description = "headfull run on dev env with chrome"
+inherits = ["dev-env", "chromium", "headfull"]
+excludes = ["test-env"]
+
+[profiles.ci]
+description = "ci run on all envs"
+enabled = { if = 'environ.get("CI") == "true"' }
+inherits = ["webkit", "headless"]
+
+[profiles.ci-test]
+description = "ci run on test env"
+hidden = { if = 'environ.get("CI") != "true"' }
+inherits = ["test-env", "firefox", "headless"]
+excludes = ["dev-env"]
+
+[profiles.ci-dev]
+description = "ci run on dev env"
+hidden = { if = 'environ.get("CI") != "true"' }
+inherits = ["dev-env", "webkit", "headless"]
+excludes = ["test-env"]
