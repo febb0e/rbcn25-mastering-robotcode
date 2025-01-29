@@ -45,6 +45,10 @@ hidden = true
 [profiles.headfull]
 hidden = true
 
+[profiles.default]
+description = "default profile for all tests on local machine"
+inherits = ["chromium", "headfull"]
+
 [profiles.regression]
 description = "headfull regression tests"
 inherits = ["dev-env", "headfull"]
