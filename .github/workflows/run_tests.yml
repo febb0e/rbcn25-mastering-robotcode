@@ -8,6 +8,12 @@ on:
       - "demo/**"
   workflow_dispatch:
 
+env:
+  PROJECT_DIR: demo
+  APP_DIR: todo-app
+  REPORTS_DIR: reports
+  RFW_RESULTS_DIR: robotframework-results
+
 jobs:
   setup-and-test:
     runs-on: ubuntu-latest
@@ -22,11 +28,11 @@ jobs:
 
       - name: Install Node Dependencies
         run: npm install
-        working-directory: demo/todo-app
+        working-directory: ${{ env.PROJECT_DIR }}/${{ env.APP_DIR }}
 
       - name: Install Playwright Browser Dependencies
         run: npx playwright install-deps
-        working-directory: demo
+        working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Setup Python 3.12
         uses: actions/setup-python@v5
@@ -38,22 +44,22 @@ jobs:
 
       - name: Create Hatch Environment
         run: hatch env create
-        working-directory: demo
+        working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Deploy Webapps
         run: hatch run start-webapps
-        working-directory: demo
+        working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Run Test Cases
-        run: hatch run robotcode -p ci-dev robot --outputdir=reports tests/browser.robot
-        working-directory: demo
+        run: hatch run robotcode robot --outputdir=${{ env.REPORTS_DIR }}
+        working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: robotframework-results
-          path: demo/reports
+          name: ${{ env.RFW_RESULTS_DIR }}
+          path: ${{ env.PROJECT_DIR }}/${{ env.REPORTS_DIR }}
 
   publish-test-results:
     needs: setup-and-test
@@ -68,7 +74,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: robotframework-results
+          name: ${{ env.RFW_RESULTS_DIR }}
           path: artifacts
 
       - name: Setup Pages
@@ -79,8 +85,8 @@ jobs:
           GHP_TOKEN: ${{ secrets.GHP_TOKEN }}
         run: |
           rm -rf public
-          mkdir -p public/reports
-          cp -r artifacts/** public/reports/          
+          mkdir -p public/${{ env.REPORTS_DIR }}
+          cp -r artifacts/** public/${{ env.REPORTS_DIR }}          
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add public
