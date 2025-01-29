@@ -51,7 +51,7 @@ jobs:
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Run Test Cases
-        run: hatch run robotcode robot --outputdir=${{ env.REPORTS_DIR }}
+        run: hatch run robotcode robot -p ci --outputdir=${{ env.REPORTS_DIR }}
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Upload Test Results
