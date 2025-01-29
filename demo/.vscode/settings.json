@@ -1,6 +1,5 @@
 {
     "robotcode.profiles": [
-        "dev",
-        "headfull"
+        "default"
     ]
 }
