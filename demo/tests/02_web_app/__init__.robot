@@ -1,4 +1,6 @@
 *** Settings ***
+Documentation       Initializes browser test environment
+
 Resource            example/config/common.resource
 Library             Browser
 
