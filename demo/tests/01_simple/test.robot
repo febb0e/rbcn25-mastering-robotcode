@@ -12,7 +12,7 @@ Test Print
 
 Test Return
     [Documentation]    Print from mylib.py
-    ${str}=    Return Something
+    ${str}    Return Something
     Log To Console    ${str}
 
 Test Resource

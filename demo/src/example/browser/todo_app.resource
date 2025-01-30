@@ -5,9 +5,9 @@ Library          Browser
 
 
 *** Variables ***
-${TODO_INPUT}=      input[id="todo-input"]
-${ADD_BUTTON}=      button[id="add-todo-button"]
-${TODO_ID}=         ${0}
+${TODO_INPUT}      input[id="todo-input"]
+${ADD_BUTTON}      button[id="add-todo-button"]
+${TODO_ID}         ${0}
 
 
 *** Keywords ***

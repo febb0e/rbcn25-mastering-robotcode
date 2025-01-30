@@ -2,11 +2,10 @@
 Documentation       Example browser tests
 
 Library             Browser
-
 Resource            example/config/webapp.resource
 Resource            example/browser/todo_app.resource
 
-Test Setup        New Page    ${WEB_APP_URL}:${PORT}
+Test Setup          New Page    ${WEB_APP_URL}:${PORT}
 
 
 *** Test Cases ***
@@ -36,11 +35,11 @@ Add And Delete Single Todo
     [Documentation]    Tests the creation and deletion of a single todo in the app
     [Tags]    regression
     VAR    @{todos}    Hold Robocon Workshop
-    Add Todos To List              @{todos}
-    Verify Todos Exist             @{todos}
-    Mark Todos As Done             @{todos}
-    Verify Todos Are Done          @{todos}
-    Delete Done Elements           @{todos}
+    Add Todos To List    @{todos}
+    Verify Todos Exist    @{todos}
+    Mark Todos As Done    @{todos}
+    Verify Todos Are Done    @{todos}
+    Delete Done Elements    @{todos}
     Verify Elements Are Deleted    @{todos}
 
 Add And Delete Multiple Todos
@@ -52,9 +51,9 @@ Add And Delete Multiple Todos
     ...    Develop Testautomation
     ...    Visit Sauna
     ...    Get Some Beers
-    Add Todos To List              @{todos}
-    Verify Todos Exist             @{todos}
-    Mark Todos As Done             @{todos}
-    Verify Todos Are Done          @{todos}
-    Delete Done Elements           @{todos}
+    Add Todos To List    @{todos}
+    Verify Todos Exist    @{todos}
+    Mark Todos As Done    @{todos}
+    Verify Todos Are Done    @{todos}
+    Delete Done Elements    @{todos}
     Verify Elements Are Deleted    @{todos}
