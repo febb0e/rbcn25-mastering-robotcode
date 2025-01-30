@@ -2,21 +2,16 @@ paths = ["tests"]
 name = "My RobotCode Example Tests"
 
 [metadata]
-"ANOTHER Metadata" = "Hallo Welt"
 "CI Run" = {expr = "environ.get('CI', 'unknown')"}
 "Architecture" = {expr = "platform.architecture()"}
 
-
-[variables]
-WEB_APP_URL = "localhost"
-
-[profiles.webkit.extend-variables]
+[profiles.webkit.variables]
 BROWSER = "webkit"
 
-[profiles.firefox.extend-variables]
+[profiles.firefox.variables]
 BROWSER = "firefox"
 
-[profiles.chromium.extend-variables]
+[profiles.chromium.variables]
 BROWSER = "chromium"
 
 [profiles.test-env.extend-variables]
@@ -61,29 +56,33 @@ description = "headfull regression tests"
 inherits = ["dev-env", "headfull"]
 includes = ["regression"]
 
-[profiles.local-test]
+[profiles.test]
 description = "headfull run on test env with firefox"
 inherits = ["test-env", "firefox", "headfull"]
-excludes = ["dev-env"]
 
-[profiles.local-dev]
+[profiles.dev]
 description = "headfull run on dev env with chrome"
 inherits = ["dev-env", "chromium", "headfull"]
-excludes = ["test-env"]
 
-[profiles.ci]
-description = "ci run on all envs"
-enabled = { if = 'environ.get("CI") == "true"' }
-inherits = ["webkit", "headless"]
+[profiles.dev.variables]
+PORT = "3001"
+APP_TITLE = "Development: Todo App"
+APP_HEADER = "Development Environment"
+APP_COLOR = "bg-blue-400"
 
 [profiles.ci-test]
 description = "ci run on test env"
-hidden = { if = 'environ.get("CI") != "true"' }
-inherits = ["test-env", "firefox", "headless"]
-excludes = ["dev-env"]
+enabled = { if = 'environ.get("CI") == "true"' }
+inherits = ["webkit", "test-env", "headless"]
 
 [profiles.ci-dev]
 description = "ci run on dev env"
+enabled = { if = 'environ.get("CI") == "true"' }
+inherits = ["firefox", "dev-env", "headless"]
+
+[profiles.ci-no-regression]
+description = "ci run on test env"
 hidden = { if = 'environ.get("CI") != "true"' }
-inherits = ["dev-env", "webkit", "headless"]
-excludes = ["test-env"]
+inherits = ["test-env", "firefox", "headless"]
+excludes = ["regression"]
+
