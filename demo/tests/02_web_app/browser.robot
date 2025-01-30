@@ -3,7 +3,6 @@ Documentation       Example browser tests
 
 Library             Browser
 
-Test Teardown       Close Browser
 
 
 *** Variables ***
@@ -99,8 +98,7 @@ Add And Delete Multiple Todos
 
 *** Keywords ***
 Open Todo App
-    [Documentation]    Opens the webapp on localhost
-    New Browser    ${BROWSER}    ${HEADLESS}
+    [Documentation]    Opens the webapp on localhost    
     New Page    ${WEB_APP_URL}:${PORT}
 
 Check App Title

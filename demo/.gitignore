@@ -69,12 +69,6 @@ cover/
 __pypackages__/
 
 
-### robotframework ###
-log.html
-output.xml
-report.html
-selenium-screenshot-*.png
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/tasks.json
@@ -94,3 +88,9 @@ selenium-screenshot-*.png
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,pythonvanilla,robotframework
+
+### robotframework ###
+results/
+
+### RobotCode
+.robotcode_cache

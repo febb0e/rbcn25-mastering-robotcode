@@ -1,4 +1,11 @@
-paths = ["."]
+paths = ["tests"]
+name = "My RobotCode Example Tests"
+
+[metadata]
+"ANOTHER Metadata" = "Hallo Welt"
+"CI Run" = {expr = "environ.get('CI', 'unknown')"}
+"Architecture" = {expr = "platform.architecture()"}
+
 
 [variables]
 WEB_APP_URL = "localhost"
