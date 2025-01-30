@@ -57,7 +57,7 @@ post-install-commands = [
 
 [tool.hatch.envs.default.scripts]
 robot = "hatch run robotcode -p default robot {args:tests}"
-robot-ci = "hatch run robotcode -p ci robot --outputdir=reports {args:tests}"
+robot-ci = "hatch run robotcode -p ci-test robot --outputdir=reports {args:tests}"
 init-something = "hatch run scripts/init-something.py"
 run-tests = ["init-something", "start-server", "robot"]
 run-tests-ci = ["start-webapps", "robot-ci", "stop-webapps"]
