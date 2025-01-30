@@ -3,65 +3,31 @@ Documentation       Example browser tests
 
 Library             Browser
 
+Resource            example/config/webapp.resource
+Resource            example/browser/todo_app.resource
 
-
-*** Variables ***
-${BROWSER}=         chromium
-${HEADLESS}=        False
-${WEB_APP_URL}=     localhost
-${PORT}=            3000
-
-${TODO_INPUT}=      input[id="todo-input"]
-${ADD_BUTTON}=      button[id="add-todo-button"]
-${TODO_ID}=         ${0}
+Test Setup        New Page    ${WEB_APP_URL}:${PORT}
 
 
 *** Test Cases ***
-Check App Title Test Environment
-    [Documentation]    Verifies the app title for the test environment
-    [Tags]    test-env    app-title
-    VAR    ${PORT}=    3000    scope=SUITE    # noqa
-    Open Todo App
-    Check App Title    Test: Todo App
+Check App Title
+    [Documentation]    Verifies the app title of the environment
+    [Tags]    title
+    Get Title    ==    ${APP_TITLE}
 
-Check App Title Development Environment
-    [Documentation]    Verifies the app title for the test environment
-    [Tags]    dev-env    app-title
-    VAR    ${PORT}=    3001    scope=SUITE    # noqa
-    Open Todo App
-    Check App Title    Development: Todo App
+Check Header Content
+    [Documentation]    Checks if the header content corresponds to the environment
+    [Tags]    header
+    Get Text    //div[@id="environment"]    ==    ${APP_HEADER}
 
-Check Test Environment Header
-    [Documentation]    Checks if the web app is in the test environment
-    [Tags]    test-env    env-header
-    VAR    ${PORT}=    3000    scope=SUITE    # noqa
-    Open Todo App
-    Check Header Environment    Test Environment
-
-Check Development Environment Header
-    [Documentation]    Checks if the web app is in the development environment
-    [Tags]    dev-env    env-header
-    VAR    ${PORT}=    3001    scope=SUITE    # noqa
-    Open Todo App
-    Check Header Environment    Development Environment
-
-Check Test Environment Color
-    [Documentation]    Checks the color of the header in test environment
-    [Tags]    test-env    color
-    VAR    ${PORT}=    3000    scope=SUITE    # noqa
-    Open Todo App
-    Check Header Color    bg-red-400
-
-Check Development Environment Color
-    [Documentation]    Checks the color of the header in development environment
-    [Tags]    dev-env    color
-    VAR    ${PORT}=    3001    scope=SUITE    # noqa
-    Open Todo App
-    Check Header Color    bg-blue-400
+Check Header Color
+    [Documentation]    Checks the color of the header depending on the environment
+    [Tags]    color
+    Get Attribute    //div[@id="environment"]    class    contains    ${APP_COLOR}
 
 Verify Url Navigation
     [Documentation]    Verifies the functionality of the url navigation
-    Open Todo App
+    [Tags]    functional
     Wait Until Keyword Succeeds    5s    500ms    Verify Url Ends With    todo
     Click    a[href="#/done"]
     Wait Until Keyword Succeeds    5s    500ms    Verify Url Ends With    done
@@ -70,7 +36,6 @@ Add And Delete Single Todo
     [Documentation]    Tests the creation and deletion of a single todo in the app
     [Tags]    regression
     VAR    @{todos}    Hold Robocon Workshop
-    Open Todo App
     Add Todos To List              @{todos}
     Verify Todos Exist             @{todos}
     Mark Todos As Done             @{todos}
@@ -87,101 +52,9 @@ Add And Delete Multiple Todos
     ...    Develop Testautomation
     ...    Visit Sauna
     ...    Get Some Beers
-    Open Todo App
     Add Todos To List              @{todos}
     Verify Todos Exist             @{todos}
     Mark Todos As Done             @{todos}
     Verify Todos Are Done          @{todos}
     Delete Done Elements           @{todos}
     Verify Elements Are Deleted    @{todos}
-
-
-*** Keywords ***
-Open Todo App
-    [Documentation]    Opens the webapp on localhost    
-    New Page    ${WEB_APP_URL}:${PORT}
-
-Check App Title
-    [Documentation]    Checks the app title against the expected value
-    [Arguments]    ${expected_title}
-    ${current_title}    Get Title
-    Should Be Equal    ${expected_title}    ${current_title}
-
-Check Header Environment
-    [Documentation]    Checks the app header against the expected value
-    [Arguments]    ${expected_env}
-    ${current_env}    Get Text    //div[@id="environment"]
-    Should Be Equal    ${expected_env}    ${current_env}
-
-Check Header Color
-    [Documentation]    Checks the app header color against the expected value
-    [Arguments]    ${expected_color}
-    ${class}    Get Attribute    //div[@id="environment"]    class
-    Should Contain    ${class}    ${expected_color}
-
-Verify Url Ends With
-    [Documentation]    Checks the apps last url path against the expected path
-    [Arguments]    ${expected_path}
-    ${current_url}    Get Url
-    VAR    ${current_path}=    ${current_url.split('/')[-1]}
-    Should Be Equal    ${current_path}    ${expected_path}
-
-Add Todos To List
-    [Documentation]    Adds a list of todos
-    [Arguments]    @{todos}
-    FOR    ${todo}    IN    @{todos}
-        Type Text    ${TODO_INPUT}    ${todo}
-        Click    ${ADD_BUTTON}
-        VAR    ${TODO_ID}    ${${TODO_ID} + 1}    scope=SUITE    # noqa
-    END
-
-Verify Todos Exist
-    [Documentation]    Verifies a list of todos exist
-    [Arguments]    @{todos}
-    Take Screenshot
-    VAR    ${id}    ${1}
-    FOR    ${todo}    IN    @{todos}
-        ${todo_text}    Get Text    //div[@id="${id}"]//span
-        Should Be Equal    ${todo_text}    ${todo}
-        VAR    ${id}    ${id + 1}
-    END
-
-Mark Todos As Done
-    [Documentation]    Marks a list of todos as done
-    [Arguments]    @{todos}
-    VAR    ${id}    ${1}
-    FOR    ${todo}    IN    @{todos}    # noqa
-        Click    //div[@id="${id}"]//button[@id="done-todo-button"]
-        VAR    ${id}    ${id + 1}
-    END
-
-Verify Todos Are Done
-    [Documentation]    Verifies a list of todos are done
-    [Arguments]    @{todos}
-    Click    a[href="#/done"]
-    Take Screenshot
-    VAR    ${id}    ${1}
-    FOR    ${todo}    IN    @{todos}
-        ${done_text}    Get Text    //div[@id="${id}"]//span
-        Should Be Equal    ${done_text}    ${todo}
-        VAR    ${id}    ${id + 1}
-    END
-
-Delete Done Elements
-    [Documentation]    Deletes a list of done elements
-    [Arguments]    @{todos}
-    VAR    ${id}    ${1}
-    FOR    ${todo}    IN    @{todos}    # noqa
-        Click    //div[@id="${id}"]//button[@id="done-todo-button"]
-        VAR    ${id}    ${id + 1}
-    END
-
-Verify Elements Are Deleted
-    [Documentation]    Verifies all elements are deleted
-    [Arguments]    @{todos}
-    Take Screenshot
-    VAR    ${id}    ${1}
-    FOR    ${todo}    IN    @{todos}    # noqa
-        Get Element Count    //div[@id="${id}"]    ==    0
-        VAR    ${id}    ${id + 1}
-    END
