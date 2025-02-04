@@ -1,9 +1,11 @@
-paths = ["tests"]
+paths = ["."]
 name = "My RobotCode Example Tests"
 
 [metadata]
-"CI Run" = {expr = "environ.get('CI', 'unknown')"}
-"Architecture" = {expr = "platform.architecture()"}
+"ci run" = { expr = "environ.get('CI', 'unknown')" }
+"os" = { expr = "platform.version()" }
+"architecture" = { expr = "platform.architecture()" }
+"python-version" = { expr = "platform.python_version()" }
 
 [profiles.webkit.variables]
 BROWSER = "webkit"
@@ -85,4 +87,3 @@ description = "ci run on test env"
 hidden = { if = 'environ.get("CI") != "true"' }
 inherits = ["test-env", "firefox", "headless"]
 excludes = ["regression"]
-
