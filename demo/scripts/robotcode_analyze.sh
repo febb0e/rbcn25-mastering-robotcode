@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Run the robotcode analyze command
-hatch run analyze
+hatch run robotcode analyze code
 # Capture the return value
 RETURN_VALUE=$?
 # Check the return value bitwise
