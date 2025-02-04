@@ -2,8 +2,8 @@
 Documentation       Example browser tests
 
 Library             Browser
-Resource            example/config/webapp.resource
-Resource            example/browser/todo_app.resource
+Resource            demo/config/webapp.resource
+Resource            demo/browser/todo_app.resource
 
 Test Setup          New Page    ${WEB_APP_URL}:${PORT}
 

@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation       Example test suite
 
-Library             example.mylib
-Resource            example/myrsc.resource
+Library             demo.mylib
+Resource            demo/myrsc.resource
 
 
 *** Test Cases ***

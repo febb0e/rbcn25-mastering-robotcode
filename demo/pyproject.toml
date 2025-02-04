@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "example"
+name = "demo"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
@@ -37,7 +37,7 @@ Issues = "https://github.com/febb0e/rbcn25-mastering-robotcode/issues"
 Source = "https://github.com/febb0e/rbcn25-mastering-robotcode"
 
 [tool.hatch.version]
-path = "src/example/__about__.py"
+path = "src/demo/__about__.py"
 
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
@@ -49,7 +49,7 @@ check-robocop = "robocop --exclude missing-doc-suite ."
 check = ["check-mypy", "check-robotidy", "check-robocop"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/example"]
+packages = ["src/demo"]
 
 [tool.hatch.envs.default]
 dependencies = ["robotframework-tidy", "robotframework-robocop"]
@@ -63,7 +63,7 @@ post-install-commands = [
 robot = "hatch run robotcode -p default robot {args:tests}"
 robot-ci = "hatch run robotcode -p ci-test robot --outputdir=reports {args:tests}"
 init-something = "hatch run scripts/init-something.py"
-run-tests = ["init-something", "start-server", "robot"]
+run-tests = ["start-webapps", "robot", "stop-webapps"]
 run-tests-ci = ["start-webapps", "robot-ci", "stop-webapps"]
 pm2-status = ["hatch run pm2 status"]
 start-todo-app-test = [

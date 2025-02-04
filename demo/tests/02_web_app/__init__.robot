@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Initializes browser test environment
 
-Resource            example/config/common.resource
+Resource            demo/config/common.resource
 Library             Browser
 
 Suite Setup         New Browser    ${BROWSER}    ${HEADLESS}
