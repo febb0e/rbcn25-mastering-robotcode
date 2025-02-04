@@ -1,0 +1,24 @@
+files: ^demo/
+repos:
+  - repo: local
+    hooks:
+      - id: mypy-checks
+        name: MyPy Checks
+        entry: hatch run check-mypy
+        language: system
+        types: [python]
+      - id: robotidy-checks
+        name: Robotidy Checks
+        entry: hatch run check-robotidy
+        language: system
+        files: \.robot$
+      - id: robocop-checks
+        name: Robocop Checks
+        entry: hatch run check-robocop
+        language: system
+        files: \.robot$
+      - id: robotcode-analyze
+        name: Robotcode Analyze
+        entry: hatch run analyze
+        language: system
+        files: \.robot$
