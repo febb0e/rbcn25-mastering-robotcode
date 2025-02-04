@@ -1,13 +1,13 @@
 *** Settings ***
-Documentation    Keywords for Todo App Browser tests
+Documentation       Keywords for Todo App Browser tests
 
-Library          Browser
+Library             Browser
 
 
 *** Variables ***
-${TODO_INPUT}      input[id="todo-input"]
-${ADD_BUTTON}      button[id="add-todo-button"]
-${TODO_ID}         ${0}
+${TODO_INPUT}       input[id="todo-input"]
+${ADD_BUTTON}       button[id="add-todo-button"]
+${TODO_ID}          ${0}
 
 
 *** Keywords ***
