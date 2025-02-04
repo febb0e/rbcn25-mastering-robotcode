@@ -4,21 +4,20 @@ repos:
     hooks:
       - id: mypy-checks
         name: MyPy Checks
-        entry: hatch run check-mypy
+        entry: bash -c 'cd demo && hatch run check-mypy'
         language: system
-        types: [python]
       - id: robotidy-checks
         name: Robotidy Checks
-        entry: hatch run check-robotidy
+        entry: bash -c 'cd demo && hatch run check-robotidy'
         language: system
         files: .*\.(robot|resource)$
       - id: robocop-checks
         name: Robocop Checks
-        entry: hatch run check-robocop
+        entry: bash -c 'cd demo && hatch run check-robocop'
         language: system
         files: .*\.(robot|resource)$
       - id: robotcode-analyze
         name: Robotcode Analyze
-        entry: hatch run analyze
+        entry: bash -c 'cd demo && hatch run analyze'
         language: system
         files: .*\.(robot|resource)$
