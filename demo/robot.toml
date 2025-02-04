@@ -15,10 +15,10 @@ BROWSER = "firefox"
 [profiles.chromium.variables]
 BROWSER = "chromium"
 
-[profiles.test-env.extend-variables]
+[profiles.dev-env.extend-variables]
 PORT = "3000"
 
-[profiles.dev-env.extend-variables]
+[profiles.test-env.extend-variables]
 PORT = "3001"
 
 [profiles.headless.extend-variables]
