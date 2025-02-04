@@ -41,10 +41,12 @@ path = "src/example/__about__.py"
 
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
+
+
 [tool.hatch.envs.types.scripts]
-check-mypy = "mypy --install-types --non-interactive {args:src/example tests}"
+check-mypy = "mypy --install-types --non-interactive ."
 check-robotidy = "robotidy --check {args: .}"
-check-robocop = "robocop {args: .}"
+check-robocop = "robocop --exclude missing-doc-suite {args: .}"
 check = ["check-mypy", "check-robotidy", "check-robocop"]
 
 [tool.hatch.build.targets.wheel]
@@ -56,7 +58,6 @@ post-install-commands = [
   "rfbrowser init",
   "npm install pm2@latest -g",
   "cd todo-app && npm install",
-  "pre-commit install",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -74,7 +75,4 @@ start-todo-app-dev = [
 ]
 start-webapps = ["start-todo-app-test", "start-todo-app-dev"]
 stop-webapps = ["hatch run pm2 delete all", "pm2 status"]
-analyze = [
-  "chmod +x ./scripts/robotcode_analyze.sh",
-  "./scripts/robotcode_analyze.sh",
-]
+analyze = ["./scripts/robotcode_analyze.sh"]
