@@ -42,7 +42,6 @@ path = "src/example/__about__.py"
 [tool.hatch.envs.types]
 extra-dependencies = ["mypy>=1.0.0"]
 
-
 [tool.hatch.envs.types.scripts]
 check-mypy = "mypy --install-types --non-interactive ."
 check-robotidy = "robotidy --check ."
