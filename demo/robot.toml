@@ -15,10 +15,10 @@ BROWSER = "firefox"
 [profiles.chromium.variables]
 BROWSER = "chromium"
 
-[profiles.dev-env.extend-variables]
+[profiles.test-env.extend-variables]
 PORT = "3000"
 
-[profiles.test-env.extend-variables]
+[profiles.dev-env.extend-variables]
 PORT = "3001"
 
 [profiles.headless.extend-variables]
@@ -54,7 +54,7 @@ inherits = ["chromium", "headfull"]
 
 [profiles.regression]
 description = "headfull regression tests"
-inherits = ["dev-env", "headfull"]
+inherits = ["test-env", "headfull"]
 includes = ["regression"]
 
 [profiles.test]
@@ -80,6 +80,12 @@ inherits = ["webkit", "test-env", "headless"]
 description = "ci run on dev env"
 enabled = { if = 'environ.get("CI") == "true"' }
 inherits = ["firefox", "dev-env", "headless"]
+
+[profiles.ci-dev.variables]
+PORT = "3001"
+APP_TITLE = "Development: Todo App"
+APP_HEADER = "Development Environment"
+APP_COLOR = "bg-blue-400"
 
 [profiles.ci-no-regression]
 description = "ci run on test env"
