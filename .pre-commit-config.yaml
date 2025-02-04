@@ -1,3 +1,4 @@
+files: ^demo/
 repos:
   - repo: local
     hooks:
@@ -10,14 +11,14 @@ repos:
         name: Robotidy Checks
         entry: hatch run check-robotidy
         language: system
-        files: ^demo/.*\.robot$
+        files: .*\.(robot|resource)$
       - id: robocop-checks
         name: Robocop Checks
         entry: hatch run check-robocop
         language: system
-        files: ^demo/.*\.robot$
+        files: .*\.(robot|resource)$
       - id: robotcode-analyze
         name: Robotcode Analyze
         entry: hatch run analyze
         language: system
-        files: ^demo/.*\.robot$
+        files: .*\.(robot|resource)$
