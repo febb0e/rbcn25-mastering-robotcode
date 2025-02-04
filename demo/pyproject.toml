@@ -45,8 +45,8 @@ extra-dependencies = ["mypy>=1.0.0"]
 
 [tool.hatch.envs.types.scripts]
 check-mypy = "mypy --install-types --non-interactive ."
-check-robotidy = "robotidy --check ."
-check-robocop = "robocop --exclude missing-doc-suite ."
+check-robotidy = "robotidy --check"
+check-robocop = "robocop --exclude missing-doc-suite"
 check = ["check-mypy", "check-robotidy", "check-robocop"]
 
 [tool.hatch.build.targets.wheel]
