@@ -3,7 +3,6 @@ name = "My RobotCode Example Tests"
 
 [metadata]
 "ci run" = { expr = "environ.get('CI', 'unknown')" }
-"os" = { expr = "platform.version()" }
 "architecture" = { expr = "platform.architecture()" }
 "python-version" = { expr = "platform.python_version()" }
 
