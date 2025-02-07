@@ -65,18 +65,9 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
         timeout-minutes: 10
 
-      - name: Start Webapps
-        run: hatch run start-webapps
-        working-directory: ${{ env.PROJECT_DIR }}
-
       - name: Run Test Cases
         run: hatch run robotcode -p ci -p ${{ env.TEST_ENV }} robot -d ${{ env.REPORTS_DIR }}
         working-directory: ${{ env.PROJECT_DIR }}
-
-      - name: Stop Webapps
-        run: hatch run stop-webapps
-        working-directory: ${{ env.PROJECT_DIR }}
-        if: always()
 
       - name: Upload Test Results
         if: always()
