@@ -6,16 +6,16 @@ Library             Process
 Library             Browser
 
 Suite Setup         Init Webapps And Browser
-Suite Teardown      Stop Webapps And Close Browser
+Suite Teardown      Close Browser And Stop Webapps
 
 
 *** Keywords ***
 Init Webapps And Browser
-    [Documentation]    Start Webapps and open browser
-    Run Process    hatch run start-webapps
+    [Documentation]    Start Webapps instances and open browser
+    Run Process    hatch    run    start-webapps
     New Browser    ${BROWSER}    ${HEADLESS}
 
-Stop Webapps And Close Browser
-    [Documentation]    Stop Webapps and close browser
-    Run Process    hatch run stop-webapps
+Close Browser And Stop Webapps
+    [Documentation]    Close Browser and stop web app instances
     Close Browser
+    Run Process    hatch    run    stop-webapps
