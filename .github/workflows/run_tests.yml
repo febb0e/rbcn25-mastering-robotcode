@@ -7,12 +7,29 @@ on:
     paths:
       - "demo/**"
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        required: false
+        default: false
+      debug_detached:
+        type: boolean
+        required: false
+        default: false
+      TEST_ENV:
+        description: 'Select Test Environment'
+        type: choice
+        default: test
+        options:
+          - test
+          - dev
 
 env:
   PROJECT_DIR: demo
   APP_DIR: todo-app
   REPORTS_DIR: reports
   RFW_RESULTS_DIR: robotframework-results
+  TEST_ENV: test
 
 jobs:
   setup-and-test:
@@ -41,10 +58,25 @@ jobs:
 
       - name: Install Hatch
         run: pipx install hatch
+      
+      # Enable tmate debugging of manually-triggered workflows if the input option was provided
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: ${{ inputs.debug_detached }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        timeout-minutes: 10
+
+      - name: Start Webapps
+        run: hatch run start-webapps
 
       - name: Run Test Cases
-        run: hatch run run-tests-ci
+        run: hatch run robotcode -p ci -p ${{ env.TEST_ENV }} robot -d ${{ env.REPORTS_DIR }}
         working-directory: ${{ env.PROJECT_DIR }}
+
+      - name: Stop Webapps
+        run: hatch run stop-webapps
+        if: always()
 
       - name: Upload Test Results
         if: always()

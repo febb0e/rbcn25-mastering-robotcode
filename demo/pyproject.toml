@@ -60,18 +60,13 @@ post-install-commands = [
 ]
 
 [tool.hatch.envs.default.scripts]
-robot = "hatch run robotcode -p default robot {args:tests}"
-robot-ci = "hatch run robotcode -p ci-test robot --outputdir=reports {args:tests}"
-init-something = "hatch run scripts/init-something.py"
-run-tests = ["start-webapps", "robot", "stop-webapps"]
-run-tests-ci = ["start-webapps", "robot-ci", "stop-webapps"]
-pm2-status = ["hatch run pm2 status"]
+init-something = "scripts/init-something.py"
 start-todo-app-test = [
-  'hatch run pm2 start "VITE_ENVIRONMENT=Test npm run dev --prefix todo-app" --name Test',
+  'pm2 start "VITE_ENVIRONMENT=Test npm run dev --prefix todo-app" --name Test',
 ]
 start-todo-app-dev = [
-  'hatch run pm2 start "VITE_ENVIRONMENT=Development npm run dev --prefix todo-app" --name Dev',
+  'pm2 start "VITE_ENVIRONMENT=Development npm run dev --prefix todo-app" --name Dev',
 ]
 start-webapps = ["start-todo-app-test", "start-todo-app-dev"]
-stop-webapps = ["hatch run pm2 delete all", "pm2 status"]
+stop-webapps = ["pm2 delete all", "pm2 status"]
 analyze = ["./scripts/robotcode_analyze.sh"]
