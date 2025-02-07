@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "demo/**"
   workflow_dispatch:
     inputs:
       debug_enabled:
