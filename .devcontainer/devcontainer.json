@@ -36,6 +36,7 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
+		"d-biehl.robotcode",
         "esbenp.prettier-vscode",
         "tamasfe.even-better-toml",
         "charliermarsh.ruff",
