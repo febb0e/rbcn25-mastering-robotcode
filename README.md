@@ -1,8 +1,8 @@
 # Mastering RobotCode and robot.toml: Best Practices in Real-Life Robot Framework Projects
 
-[![Pipeline Status](https://github.com/febb0e/rbcn25-mastering-robotcode/actions/workflows/run_tests.yml/badge.svg)](https://github.com/febb0e/rbcn25-mastering-robotcode/actions/workflows/run_tests.yml)
-[![Robotframework Report](https://img.shields.io/badge/Robotframework%20Report-00C0B5)](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/report.html)
-[![Robotframework Log](https://img.shields.io/badge/Robotframework%20Log-00C0B5)](https://febb0e.github.io/rbcn25-mastering-robotcode/public/reports/log.html)
+[![Pipeline Status](https://github.com/robotcodedev/rbcn25-mastering-robotcode/actions/workflows/run_tests.yml/badge.svg)](https://github.com/robotcodedev/rbcn25-mastering-robotcode/actions/workflows/run_tests.yml)
+[![Robotframework Report](https://img.shields.io/badge/Robotframework%20Report-00C0B5)](https://robotcodedev.github.io/rbcn25-mastering-robotcode/public/reports/report.html)
+[![Robotframework Log](https://img.shields.io/badge/Robotframework%20Log-00C0B5)](https://robotcodedev.github.io/rbcn25-mastering-robotcode/public/reports/log.html)
 
 How to master RobotCode Extension and Command Line Tools in real-life Robot Framework projects.
 
