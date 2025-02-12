@@ -3,7 +3,7 @@ name: Run Robotframework Tests
 on:
   push:
     branches:
-      - solution
+      - main
   workflow_dispatch:
     inputs:
       debug_enabled:
