@@ -13,7 +13,7 @@ Test Print
 Test Return
     [Documentation]    Print from mylib.py
     ${str}    Return Something
-    Log To Console    ${str}
+    Log    ${str}
 
 Test Resource
     [Documentation]    Print from myrsc.resource
