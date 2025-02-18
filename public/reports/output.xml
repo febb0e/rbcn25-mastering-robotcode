@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-02-18T08:36:47.300778" rpa="false" schemaversion="5">
+<suite id="s1" name="My RobotCode Example Tests" source="/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/tests">
+<suite id="s1-s1" name="01 Simple" source="/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/tests/01_simple">
+<suite id="s1-s1-s1" name="Test" source="/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/tests/01_simple/test.robot">
+<test id="s1-s1-s1-t1" name="Test Print" line="9">
+<kw name="Print Something" owner="demo.mylib">
+<msg time="2025-02-18T08:36:47.320513" level="INFO">Hello Robocon</msg>
+<status status="PASS" start="2025-02-18T08:36:47.320376" elapsed="0.000188"/>
+</kw>
+<doc>Print from mylib.py</doc>
+<status status="PASS" start="2025-02-18T08:36:47.319775" elapsed="0.000882"/>
+</test>
+<test id="s1-s1-s1-t2" name="Test Return" line="13">
+<kw name="Return Something" owner="demo.mylib">
+<msg time="2025-02-18T08:36:47.321274" level="INFO">${str} = Welcome to our Workshop</msg>
+<var>${str}</var>
+<status status="PASS" start="2025-02-18T08:36:47.321164" elapsed="0.000133"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-18T08:36:47.321487" level="INFO">Welcome to our Workshop</msg>
+<arg>${str}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-18T08:36:47.321379" elapsed="0.000140"/>
+</kw>
+<doc>Print from mylib.py</doc>
+<status status="PASS" start="2025-02-18T08:36:47.320875" elapsed="0.000717"/>
+</test>
+<test id="s1-s1-s1-t3" name="Test Resource" line="18">
+<kw name="Log Str To Console" owner="myrsc" source_name="Log ${Str} To Console">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${str}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-02-18T08:36:47.322452" elapsed="0.000136"/>
+</kw>
+<arg>Hello from Resource</arg>
+<doc>Logs a string to console</doc>
+<status status="PASS" start="2025-02-18T08:36:47.322115" elapsed="0.000550"/>
+</kw>
+<doc>Print from myrsc.resource</doc>
+<status status="PASS" start="2025-02-18T08:36:47.321773" elapsed="0.001013"/>
+</test>
+<doc>Example test suite</doc>
+<status status="PASS" start="2025-02-18T08:36:47.316563" elapsed="0.006556"/>
+</suite>
+<status status="PASS" start="2025-02-18T08:36:47.315649" elapsed="0.007926"/>
+</suite>
+<suite id="s1-s2" name="02 Web App" source="/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/tests/02_web_app">
+<kw name="Init Webapps And Browser" type="SETUP">
+<kw name="Run Process" owner="Process">
+<msg time="2025-02-18T08:36:47.416128" level="INFO">Starting process:
+hatch run start-webapps</msg>
+<msg time="2025-02-18T08:36:47.419572" level="INFO">Waiting for process to complete.</msg>
+<msg time="2025-02-18T08:36:48.161734" level="INFO">Process completed.</msg>
+<arg>hatch</arg>
+<arg>run</arg>
+<arg>start-webapps</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2025-02-18T08:36:47.415945" elapsed="0.746039"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-18T08:36:48.163955" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/reports/browser/traces/temp/9facff8f-a335-4478-ae43-5dd3375813da"}</msg>
+<msg time="2025-02-18T08:36:48.168137" level="INFO">Starting Browser process /home/runner/.local/share/hatch/env/virtual/demo/F9yPextR/demo/lib/python3.12/site-packages/Browser/wrapper/index.js using port 42583</msg>
+<msg time="2025-02-18T08:36:48.168205" level="INFO">Node startup parameters: ['node', '/home/runner/.local/share/hatch/env/virtual/demo/F9yPextR/demo/lib/python3.12/site-packages/Browser/wrapper/index.js', '42583']</msg>
+<msg time="2025-02-18T08:36:49.041576" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/reports/browser/traces/temp/9facff8f-a335-4478-ae43-5dd3375813da"}</msg>
+<arg>${BROWSER}</arg>
+<arg>${HEADLESS}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-18T08:36:48.162530" elapsed="0.882519"/>
+</kw>
+<doc>Start Webapps instances and open browser</doc>
+<status status="PASS" start="2025-02-18T08:36:47.415504" elapsed="1.629793"/>
+</kw>
+<suite id="s1-s2-s1" name="Browser" source="/home/runner/work/rbcn25-mastering-robotcode/rbcn25-mastering-robotcode/demo/tests/02_web_app/browser.robot">
+<test id="s1-s2-s1-t1" name="Check App Title" line="12">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:49.643699" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:49.643848" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.096084" elapsed="0.548009"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-02-18T08:36:49.653219" level="INFO">Title: 'Test: Todo App'</msg>
+<arg>==</arg>
+<arg>${APP_TITLE}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.644404" elapsed="0.008944"/>
+</kw>
+<msg time="2025-02-18T08:36:49.657482" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:49.678801" level="INFO">Switching context to context=2be0df80-6bab-48a2-a2d6-8ca778ad49fe in CURRENT</msg>
+<msg time="2025-02-18T08:36:49.684591" level="INFO">Successfully changed active context: context=2be0df80-6bab-48a2-a2d6-8ca778ad49fe</msg>
+<msg time="2025-02-18T08:36:49.692104" level="INFO">Successfully closed Context</msg>
+<doc>Verifies the app title of the environment</doc>
+<tag>title</tag>
+<status status="PASS" start="2025-02-18T08:36:49.092202" elapsed="0.561602"/>
+</test>
+<test id="s1-s2-s1-t2" name="Check Header Content" line="17">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:49.810168" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:49.810284" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.695239" elapsed="0.115386"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:49.852513" level="INFO">Text: 'Test Environment'</msg>
+<arg>//div[@id="environment"]</arg>
+<arg>==</arg>
+<arg>${APP_HEADER}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.810909" elapsed="0.041725"/>
+</kw>
+<msg time="2025-02-18T08:36:49.854566" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:49.862202" level="INFO">Switching context to context=e889db00-d15f-4c2f-b5d3-f2f1282955a3 in CURRENT</msg>
+<msg time="2025-02-18T08:36:49.866419" level="INFO">Successfully changed active context: context=e889db00-d15f-4c2f-b5d3-f2f1282955a3</msg>
+<msg time="2025-02-18T08:36:49.870818" level="INFO">Successfully closed Context</msg>
+<doc>Checks if the header content corresponds to the environment</doc>
+<tag>header</tag>
+<status status="PASS" start="2025-02-18T08:36:49.692544" elapsed="0.160281"/>
+</test>
+<test id="s1-s2-s1-t3" name="Check Header Color" line="22">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:49.987375" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:49.987482" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.873334" elapsed="0.114360"/>
+</kw>
+<kw name="Get Attribute" owner="Browser">
+<msg time="2025-02-18T08:36:50.020784" level="INFO">Attribute is: 'text-white text-center py-2 bg-red-400'</msg>
+<arg>//div[@id="environment"]</arg>
+<arg>class</arg>
+<arg>contains</arg>
+<arg>${APP_COLOR}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the HTML ``attribute`` of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:49.988004" elapsed="0.032950"/>
+</kw>
+<msg time="2025-02-18T08:36:50.023406" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:50.031766" level="INFO">Switching context to context=e15ccf29-70a9-4dc1-a871-f59c7dfc63b9 in CURRENT</msg>
+<msg time="2025-02-18T08:36:50.035779" level="INFO">Successfully changed active context: context=e15ccf29-70a9-4dc1-a871-f59c7dfc63b9</msg>
+<msg time="2025-02-18T08:36:50.040690" level="INFO">Successfully closed Context</msg>
+<doc>Checks the color of the header depending on the environment</doc>
+<tag>color</tag>
+<status status="PASS" start="2025-02-18T08:36:49.871187" elapsed="0.150007"/>
+</test>
+<test id="s1-s2-s1-t4" name="Verify Url Navigation" line="27">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:50.164051" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:50.164158" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.043289" elapsed="0.121082"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Verify Url Ends With" owner="todo_app">
+<kw name="Get Url" owner="Browser">
+<msg time="2025-02-18T08:36:50.168865" level="INFO">${current_url} = http://localhost:3000/#/todo</msg>
+<var>${current_url}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.165794" elapsed="0.003120"/>
+</kw>
+<variable name="${current_path}">
+<msg time="2025-02-18T08:36:50.169651" level="INFO">${current_path} = todo</msg>
+<var>${current_url.split('/')[-1]}</var>
+<status status="PASS" start="2025-02-18T08:36:50.169029" elapsed="0.000667"/>
+</variable>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_path}</arg>
+<arg>${expected_path}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.169905" elapsed="0.000331"/>
+</kw>
+<arg>todo</arg>
+<doc>Checks the apps last url path against the expected path</doc>
+<status status="PASS" start="2025-02-18T08:36:50.165339" elapsed="0.004995"/>
+</kw>
+<arg>5s</arg>
+<arg>500ms</arg>
+<arg>Verify Url Ends With</arg>
+<arg>todo</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.164694" elapsed="0.005723"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:50.170967" level="INFO">Clicks the element 'a[href="#/done"]'.</msg>
+<arg>a[href="#/done"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.170566" elapsed="0.053281"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Verify Url Ends With" owner="todo_app">
+<kw name="Get Url" owner="Browser">
+<msg time="2025-02-18T08:36:50.227554" level="INFO">${current_url} = http://localhost:3000/#/todo</msg>
+<var>${current_url}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.225115" elapsed="0.002472"/>
+</kw>
+<variable name="${current_path}">
+<msg time="2025-02-18T08:36:50.228177" level="INFO">${current_path} = todo</msg>
+<var>${current_url.split('/')[-1]}</var>
+<status status="PASS" start="2025-02-18T08:36:50.227656" elapsed="0.000564"/>
+</variable>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2025-02-18T08:36:50.228729" level="FAIL">todo != done</msg>
+<arg>${current_path}</arg>
+<arg>${expected_path}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="FAIL" start="2025-02-18T08:36:50.228363" elapsed="0.000614">todo != done</status>
+</kw>
+<arg>done</arg>
+<doc>Checks the apps last url path against the expected path</doc>
+<status status="FAIL" start="2025-02-18T08:36:50.224675" elapsed="0.004459">todo != done</status>
+</kw>
+<kw name="Verify Url Ends With" owner="todo_app">
+<kw name="Get Url" owner="Browser">
+<msg time="2025-02-18T08:36:50.732642" level="INFO">${current_url} = http://localhost:3000/#/done</msg>
+<var>${current_url}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.730127" elapsed="0.002556"/>
+</kw>
+<variable name="${current_path}">
+<msg time="2025-02-18T08:36:50.733166" level="INFO">${current_path} = done</msg>
+<var>${current_url.split('/')[-1]}</var>
+<status status="PASS" start="2025-02-18T08:36:50.732783" elapsed="0.000414"/>
+</variable>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_path}</arg>
+<arg>${expected_path}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.733305" elapsed="0.000195"/>
+</kw>
+<arg>done</arg>
+<doc>Checks the apps last url path against the expected path</doc>
+<status status="PASS" start="2025-02-18T08:36:50.729607" elapsed="0.003956"/>
+</kw>
+<arg>5s</arg>
+<arg>500ms</arg>
+<arg>Verify Url Ends With</arg>
+<arg>done</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.224163" elapsed="0.509448"/>
+</kw>
+<msg time="2025-02-18T08:36:50.735333" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:50.742805" level="INFO">Switching context to context=3196f182-4610-453c-b352-1fc5967b61a0 in CURRENT</msg>
+<msg time="2025-02-18T08:36:50.747034" level="INFO">Successfully changed active context: context=3196f182-4610-453c-b352-1fc5967b61a0</msg>
+<msg time="2025-02-18T08:36:50.751934" level="INFO">Successfully closed Context</msg>
+<doc>Verifies the functionality of the url navigation</doc>
+<tag>functional</tag>
+<status status="PASS" start="2025-02-18T08:36:50.041067" elapsed="0.692637"/>
+</test>
+<test id="s1-s2-s1-t5" name="Add And Delete Single Todo" line="34">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:50.869663" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:50.869845" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.754335" elapsed="0.115743"/>
+</kw>
+<variable name="@{todos}">
+<msg time="2025-02-18T08:36:50.870549" level="INFO">@{todos} = [ Hold Robocon Workshop ]</msg>
+<var>Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:50.870267" elapsed="0.000330"/>
+</variable>
+<kw name="Add Todos To List" owner="todo_app">
+<for flavor="IN">
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:50.872501" level="INFO">Types the text 'Hold Robocon Workshop' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.871988" elapsed="0.053003"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:50.925807" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.925277" elapsed="0.032762"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:50.958825" level="INFO">${TODO_ID} = 1</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:50.958153" elapsed="0.000706"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:50.871783" elapsed="0.087130"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:50.871432" elapsed="0.087540"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Adds a list of todos</doc>
+<status status="PASS" start="2025-02-18T08:36:50.870984" elapsed="0.088073"/>
+</kw>
+<kw name="Verify Todos Exist" owner="todo_app">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:51.044050" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:50.959596" elapsed="0.084594"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.044628" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.044280" elapsed="0.000376"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.066922" level="INFO">Text: 'Hold Robocon Workshop'</msg>
+<msg time="2025-02-18T08:36:51.067058" level="INFO">${todo_text} = Hold Robocon Workshop</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.045151" elapsed="0.021934"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.067266" elapsed="0.000272"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.068143" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.067600" elapsed="0.000575"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:51.044989" elapsed="0.023240"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.044732" elapsed="0.023553"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies a list of todos exist</doc>
+<status status="PASS" start="2025-02-18T08:36:50.959285" elapsed="0.109079"/>
+</kw>
+<kw name="Mark Todos As Done" owner="todo_app">
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.069045" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.068793" elapsed="0.000278"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.069952" level="INFO">Clicks the element '//div[@id="1"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.069542" elapsed="0.020150"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.090277" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.089820" elapsed="0.000490"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:51.069401" elapsed="0.020959"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.069130" elapsed="0.021283"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Marks a list of todos as done</doc>
+<status status="PASS" start="2025-02-18T08:36:51.068542" elapsed="0.021946"/>
+</kw>
+<kw name="Verify Todos Are Done" owner="todo_app">
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.091359" level="INFO">Clicks the element 'a[href="#/done"]'.</msg>
+<arg>a[href="#/done"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.091011" elapsed="0.030349"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:51.191899" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-2.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-2.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.121598" elapsed="0.070567"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.192934" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.192291" elapsed="0.000727"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.204981" level="INFO">Text: 'Hold Robocon Workshop'</msg>
+<msg time="2025-02-18T08:36:51.205077" level="INFO">${done_text} = Hold Robocon Workshop</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.193599" elapsed="0.011503"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.205232" elapsed="0.000216"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.205916" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.205505" elapsed="0.000441"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:51.193396" elapsed="0.012598"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.193156" elapsed="0.012884"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies a list of todos are done</doc>
+<status status="PASS" start="2025-02-18T08:36:51.090688" elapsed="0.115424"/>
+</kw>
+<kw name="Delete Done Elements" owner="todo_app">
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.206807" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.206528" elapsed="0.000307"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.207497" level="INFO">Clicks the element '//div[@id="1"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.207151" elapsed="0.030432"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.238096" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.237662" elapsed="0.000465"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:51.207041" elapsed="0.031135"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.206894" elapsed="0.031328"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Deletes a list of done elements</doc>
+<status status="PASS" start="2025-02-18T08:36:51.206287" elapsed="0.032050"/>
+</kw>
+<kw name="Verify Elements Are Deleted" owner="todo_app">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:51.308678" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-3.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-3.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.238834" elapsed="0.070017"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.309264" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.308943" elapsed="0.000350"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.309709" elapsed="0.003845"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.314042" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.313632" elapsed="0.000441"/>
+</variable>
+<var name="${todo}">Hold Robocon Workshop</var>
+<status status="PASS" start="2025-02-18T08:36:51.309557" elapsed="0.004563"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.309363" elapsed="0.004803"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies all elements are deleted</doc>
+<status status="PASS" start="2025-02-18T08:36:51.238523" elapsed="0.075714"/>
+</kw>
+<msg time="2025-02-18T08:36:51.316001" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:51.324134" level="INFO">Switching context to context=509feab3-af41-4d9e-bb70-6745aac67c8f in CURRENT</msg>
+<msg time="2025-02-18T08:36:51.328704" level="INFO">Successfully changed active context: context=509feab3-af41-4d9e-bb70-6745aac67c8f</msg>
+<msg time="2025-02-18T08:36:51.333063" level="INFO">Successfully closed Context</msg>
+<doc>Tests the creation and deletion of a single todo in the app</doc>
+<tag>regression</tag>
+<status status="PASS" start="2025-02-18T08:36:50.752280" elapsed="0.562063"/>
+</test>
+<test id="s1-s2-s1-t6" name="Add And Delete Multiple Todos" line="45">
+<kw name="New Page" owner="Browser" type="SETUP">
+<msg time="2025-02-18T08:36:51.451701" level="INFO">Successfully initialized new page object and opened url: localhost:3000</msg>
+<msg time="2025-02-18T08:36:51.451846" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${WEB_APP_URL}:${PORT}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.335717" elapsed="0.116362"/>
+</kw>
+<variable name="@{todos}">
+<msg time="2025-02-18T08:36:51.452519" level="INFO">@{todos} = [ Charge Laptop | Install VSCode | Get To Know Robotcode | Develop Testautomation | Visit Sauna | Get Some Beers ]</msg>
+<var>Charge Laptop</var>
+<var>Install VSCode</var>
+<var>Get To Know Robotcode</var>
+<var>Develop Testautomation</var>
+<var>Visit Sauna</var>
+<var>Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:51.452252" elapsed="0.000313"/>
+</variable>
+<kw name="Add Todos To List" owner="todo_app">
+<for flavor="IN">
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.454467" level="INFO">Types the text 'Charge Laptop' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.453936" elapsed="0.044604"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.499508" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.498865" elapsed="0.042261"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.541943" level="INFO">${TODO_ID} = 2</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.541248" elapsed="0.000728"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:51.453693" elapsed="0.088338"/>
+</iter>
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.542763" level="INFO">Types the text 'Install VSCode' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.542317" elapsed="0.026052"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.569033" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.568558" elapsed="0.035997"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.605290" level="INFO">${TODO_ID} = 3</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.604653" elapsed="0.000669"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:51.542161" elapsed="0.063214"/>
+</iter>
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.606085" level="INFO">Types the text 'Get To Know Robotcode' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.605661" elapsed="0.031419"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.637724" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.637273" elapsed="0.035678"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.673687" level="INFO">${TODO_ID} = 4</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.673059" elapsed="0.000660"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:51.605500" elapsed="0.068299"/>
+</iter>
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.674485" level="INFO">Types the text 'Develop Testautomation' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.674075" elapsed="0.031754"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.706450" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.706015" elapsed="0.031513"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.738240" level="INFO">${TODO_ID} = 5</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.737616" elapsed="0.000656"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:51.673927" elapsed="0.064395"/>
+</iter>
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.739028" level="INFO">Types the text 'Visit Sauna' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.738627" elapsed="0.020154"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.759354" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.758948" elapsed="0.028597"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.788252" level="INFO">${TODO_ID} = 6</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.787631" elapsed="0.000653"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:51.738491" elapsed="0.049844"/>
+</iter>
+<iter>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.788996" level="INFO">Types the text 'Get Some Beers' in the given field.</msg>
+<arg>${TODO_INPUT}</arg>
+<arg>${todo}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.788592" elapsed="0.023588"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.812865" level="INFO">Clicks the element 'button[id="add-todo-button"]'.</msg>
+<arg>${ADD_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.812374" elapsed="0.041476"/>
+</kw>
+<variable name="${TODO_ID}" scope="SUITE">
+<msg time="2025-02-18T08:36:51.854573" level="INFO">${TODO_ID} = 7</msg>
+<var>${${TODO_ID} + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.853947" elapsed="0.000659"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:51.788458" elapsed="0.066201"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.453422" elapsed="0.401287"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Adds a list of todos</doc>
+<status status="PASS" start="2025-02-18T08:36:51.452952" elapsed="0.401858"/>
+</kw>
+<kw name="Verify Todos Exist" owner="todo_app">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:51.926782" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-4.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-4.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.855337" elapsed="0.071599"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.927349" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.927026" elapsed="0.000350"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.945872" level="INFO">Text: 'Charge Laptop'</msg>
+<msg time="2025-02-18T08:36:51.945982" level="INFO">${todo_text} = Charge Laptop</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.927801" elapsed="0.018208"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.946156" elapsed="0.000233"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.946857" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.946447" elapsed="0.000439"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:51.927630" elapsed="0.019304"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.955990" level="INFO">Text: 'Install VSCode'</msg>
+<msg time="2025-02-18T08:36:51.956079" level="INFO">${todo_text} = Install VSCode</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.947170" elapsed="0.008934"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.956221" elapsed="0.000200"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.956882" level="INFO">${id} = 3</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.956475" elapsed="0.000436"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:51.947049" elapsed="0.009908"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.965865" level="INFO">Text: 'Get To Know Robotcode'</msg>
+<msg time="2025-02-18T08:36:51.965953" level="INFO">${todo_text} = Get To Know Robotcode</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.957179" elapsed="0.008799"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.966098" elapsed="0.000214"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.966756" level="INFO">${id} = 4</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.966367" elapsed="0.000419"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:51.957066" elapsed="0.009768"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.975308" level="INFO">Text: 'Develop Testautomation'</msg>
+<msg time="2025-02-18T08:36:51.975393" level="INFO">${todo_text} = Develop Testautomation</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.967052" elapsed="0.008366"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.975534" elapsed="0.000197"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.976181" level="INFO">${id} = 5</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.975816" elapsed="0.000393"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:51.966940" elapsed="0.009322"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.985103" level="INFO">Text: 'Visit Sauna'</msg>
+<msg time="2025-02-18T08:36:51.985191" level="INFO">${todo_text} = Visit Sauna</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.976506" elapsed="0.008711"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.985333" elapsed="0.000201"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.986027" level="INFO">${id} = 6</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.985633" elapsed="0.000423"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:51.976389" elapsed="0.009714"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:51.994605" level="INFO">Text: 'Get Some Beers'</msg>
+<msg time="2025-02-18T08:36:51.994690" level="INFO">${todo_text} = Get Some Beers</msg>
+<var>${todo_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.986318" elapsed="0.008397"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${todo_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.994857" elapsed="0.000196"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.995464" level="INFO">${id} = 7</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.995107" elapsed="0.000386"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:51.986207" elapsed="0.009332"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.927443" elapsed="0.068139"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies a list of todos exist</doc>
+<status status="PASS" start="2025-02-18T08:36:51.855024" elapsed="0.140630"/>
+</kw>
+<kw name="Mark Todos As Done" owner="todo_app">
+<variable name="${id}">
+<msg time="2025-02-18T08:36:51.996302" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:51.996063" elapsed="0.000264"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:51.996985" level="INFO">Clicks the element '//div[@id="1"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:51.996626" elapsed="0.024751"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.021914" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.021469" elapsed="0.000476"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:51.996522" elapsed="0.025472"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.022614" level="INFO">Clicks the element '//div[@id="2"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.022242" elapsed="0.031656"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.054449" level="INFO">${id} = 3</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.054003" elapsed="0.000479"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:52.022101" elapsed="0.032430"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.055203" level="INFO">Clicks the element '//div[@id="3"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.054803" elapsed="0.032552"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.088049" level="INFO">${id} = 4</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.087486" elapsed="0.000605"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:52.054649" elapsed="0.033498"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.088866" level="INFO">Clicks the element '//div[@id="4"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.088436" elapsed="0.031647"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.120573" level="INFO">${id} = 5</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.120165" elapsed="0.000440"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:52.088289" elapsed="0.032364"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.121293" level="INFO">Clicks the element '//div[@id="5"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.120922" elapsed="0.032478"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.153936" level="INFO">${id} = 6</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.153485" elapsed="0.000483"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:52.120786" elapsed="0.033231"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.154648" level="INFO">Clicks the element '//div[@id="6"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.154267" elapsed="0.032303"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.187088" level="INFO">${id} = 7</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.186651" elapsed="0.000469"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:52.154129" elapsed="0.033040"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:51.996383" elapsed="0.190834"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Marks a list of todos as done</doc>
+<status status="PASS" start="2025-02-18T08:36:51.995841" elapsed="0.191455"/>
+</kw>
+<kw name="Verify Todos Are Done" owner="todo_app">
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.188146" level="INFO">Clicks the element 'a[href="#/done"]'.</msg>
+<arg>a[href="#/done"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.187815" elapsed="0.032428"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:52.293334" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-5.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-5.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.220464" elapsed="0.073018"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.293927" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.293574" elapsed="0.000381"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.303830" level="INFO">Text: 'Charge Laptop'</msg>
+<msg time="2025-02-18T08:36:52.303922" level="INFO">${done_text} = Charge Laptop</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.294364" elapsed="0.009624"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.304117" elapsed="0.000211"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.304771" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.304384" elapsed="0.000417"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:52.294212" elapsed="0.010635"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.312973" level="INFO">Text: 'Install VSCode'</msg>
+<msg time="2025-02-18T08:36:52.313058" level="INFO">${done_text} = Install VSCode</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.305057" elapsed="0.008026"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.313197" elapsed="0.000195"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.313832" level="INFO">${id} = 3</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.313448" elapsed="0.000414"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:52.304950" elapsed="0.008957"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.322432" level="INFO">Text: 'Get To Know Robotcode'</msg>
+<msg time="2025-02-18T08:36:52.322516" level="INFO">${done_text} = Get To Know Robotcode</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.314116" elapsed="0.008425"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.322654" elapsed="0.000226"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.323295" level="INFO">${id} = 4</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.322936" elapsed="0.000387"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:52.314007" elapsed="0.009360"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.331601" level="INFO">Text: 'Develop Testautomation'</msg>
+<msg time="2025-02-18T08:36:52.331686" level="INFO">${done_text} = Develop Testautomation</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.323579" elapsed="0.008153"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.331906" elapsed="0.000236"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.332563" level="INFO">${id} = 5</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.332201" elapsed="0.000390"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:52.323467" elapsed="0.009168"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.340824" level="INFO">Text: 'Visit Sauna'</msg>
+<msg time="2025-02-18T08:36:52.340908" level="INFO">${done_text} = Visit Sauna</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.332873" elapsed="0.008059"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.341046" elapsed="0.000192"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.341650" level="INFO">${id} = 6</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.341293" elapsed="0.000386"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:52.332735" elapsed="0.008988"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-02-18T08:36:52.349613" level="INFO">Text: 'Get Some Beers'</msg>
+<msg time="2025-02-18T08:36:52.349697" level="INFO">${done_text} = Get Some Beers</msg>
+<var>${done_text}</var>
+<arg>//div[@id="${id}"]//span</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.341953" elapsed="0.007769"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${done_text}</arg>
+<arg>${todo}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.349865" elapsed="0.000195"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.350470" level="INFO">${id} = 7</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.350114" elapsed="0.000384"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:52.341843" elapsed="0.008700"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:52.294025" elapsed="0.056559"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies a list of todos are done</doc>
+<status status="PASS" start="2025-02-18T08:36:52.187499" elapsed="0.163154"/>
+</kw>
+<kw name="Delete Done Elements" owner="todo_app">
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.351291" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.351051" elapsed="0.000265"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.351952" level="INFO">Clicks the element '//div[@id="1"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.351608" elapsed="0.018610"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.370693" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.370297" elapsed="0.000426"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:52.351507" elapsed="0.019289"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.371389" level="INFO">Clicks the element '//div[@id="2"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.371034" elapsed="0.032556"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.404123" level="INFO">${id} = 3</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.403676" elapsed="0.000478"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:52.370911" elapsed="0.033291"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.404893" level="INFO">Clicks the element '//div[@id="3"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.404492" elapsed="0.031925"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.436921" level="INFO">${id} = 4</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.436497" elapsed="0.000456"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:52.404360" elapsed="0.032641"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.437597" level="INFO">Clicks the element '//div[@id="4"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.437236" elapsed="0.032695"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.470470" level="INFO">${id} = 5</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.470026" elapsed="0.000475"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:52.437109" elapsed="0.033442"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.471201" level="INFO">Clicks the element '//div[@id="5"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.470816" elapsed="0.032720"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.504063" level="INFO">${id} = 6</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.503621" elapsed="0.000473"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:52.470663" elapsed="0.033478"/>
+</iter>
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-02-18T08:36:52.504763" level="INFO">Clicks the element '//div[@id="6"]//button[@id="done-todo-button"]'.</msg>
+<arg>//div[@id="${id}"]//button[@id="done-todo-button"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.504377" elapsed="0.032118"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.537209" level="INFO">${id} = 7</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.536604" elapsed="0.000647"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:52.504249" elapsed="0.033066"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:52.351371" elapsed="0.186009"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Deletes a list of done elements</doc>
+<status status="PASS" start="2025-02-18T08:36:52.350833" elapsed="0.186653"/>
+</kw>
+<kw name="Verify Elements Are Deleted" owner="todo_app">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-18T08:36:52.607669" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-6.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-6.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.538127" elapsed="0.069719"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.608261" level="INFO">${id} = 1</msg>
+<var>${1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.607934" elapsed="0.000355"/>
+</variable>
+<for flavor="IN">
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.608672" elapsed="0.003187"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.612310" level="INFO">${id} = 2</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.611933" elapsed="0.000406"/>
+</variable>
+<var name="${todo}">Charge Laptop</var>
+<status status="PASS" start="2025-02-18T08:36:52.608531" elapsed="0.003854"/>
+</iter>
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.612599" elapsed="0.002540"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.615592" level="INFO">${id} = 3</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.615211" elapsed="0.000411"/>
+</variable>
+<var name="${todo}">Install VSCode</var>
+<status status="PASS" start="2025-02-18T08:36:52.612484" elapsed="0.003182"/>
+</iter>
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.615901" elapsed="0.002389"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.618723" level="INFO">${id} = 4</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.618362" elapsed="0.000420"/>
+</variable>
+<var name="${todo}">Get To Know Robotcode</var>
+<status status="PASS" start="2025-02-18T08:36:52.615789" elapsed="0.003044"/>
+</iter>
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.619039" elapsed="0.002381"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.621879" level="INFO">${id} = 5</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.621491" elapsed="0.000417"/>
+</variable>
+<var name="${todo}">Develop Testautomation</var>
+<status status="PASS" start="2025-02-18T08:36:52.618929" elapsed="0.003024"/>
+</iter>
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.622156" elapsed="0.002494"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.625109" level="INFO">${id} = 6</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.624722" elapsed="0.000416"/>
+</variable>
+<var name="${todo}">Visit Sauna</var>
+<status status="PASS" start="2025-02-18T08:36:52.622048" elapsed="0.003135"/>
+</iter>
+<iter>
+<kw name="Get Element Count" owner="Browser">
+<arg>//div[@id="${id}"]</arg>
+<arg>==</arg>
+<arg>0</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.625386" elapsed="0.002439"/>
+</kw>
+<variable name="${id}">
+<msg time="2025-02-18T08:36:52.628256" level="INFO">${id} = 7</msg>
+<var>${id + 1}</var>
+<status status="PASS" start="2025-02-18T08:36:52.627896" elapsed="0.000390"/>
+</variable>
+<var name="${todo}">Get Some Beers</var>
+<status status="PASS" start="2025-02-18T08:36:52.625278" elapsed="0.003052"/>
+</iter>
+<var>${todo}</var>
+<value>@{todos}</value>
+<status status="PASS" start="2025-02-18T08:36:52.608356" elapsed="0.020015"/>
+</for>
+<arg>@{todos}</arg>
+<doc>Verifies all elements are deleted</doc>
+<status status="PASS" start="2025-02-18T08:36:52.537761" elapsed="0.090723"/>
+</kw>
+<msg time="2025-02-18T08:36:52.630025" level="INFO">Set timeout to: 10000</msg>
+<msg time="2025-02-18T08:36:52.636315" level="INFO">Switching context to context=c81c3bc0-298c-4a93-bef1-d10a4496d724 in CURRENT</msg>
+<msg time="2025-02-18T08:36:52.639782" level="INFO">Successfully changed active context: context=c81c3bc0-298c-4a93-bef1-d10a4496d724</msg>
+<msg time="2025-02-18T08:36:52.644792" level="INFO">Successfully closed Context</msg>
+<doc>Tests the creation and deletion of multiple todos in the app</doc>
+<tag>regression</tag>
+<status status="PASS" start="2025-02-18T08:36:51.333436" elapsed="1.295154"/>
+</test>
+<doc>Example browser tests</doc>
+<status status="PASS" start="2025-02-18T08:36:49.045457" elapsed="3.599775"/>
+</suite>
+<kw name="Close Browser And Stop Webapps" type="TEARDOWN">
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-18T08:36:52.683381" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.647895" elapsed="0.035625"/>
+</kw>
+<kw name="Run Process" owner="Process">
+<msg time="2025-02-18T08:36:52.683948" level="INFO">Starting process:
+hatch run stop-webapps</msg>
+<msg time="2025-02-18T08:36:52.688837" level="INFO">Waiting for process to complete.</msg>
+<msg time="2025-02-18T08:36:53.248493" level="INFO">Process completed.</msg>
+<arg>hatch</arg>
+<arg>run</arg>
+<arg>stop-webapps</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2025-02-18T08:36:52.683682" elapsed="0.565014"/>
+</kw>
+<doc>Close Browser and stop web app instances</doc>
+<status status="PASS" start="2025-02-18T08:36:52.647591" elapsed="0.601409"/>
+</kw>
+<doc>Initializes browser test environment</doc>
+<status status="PASS" start="2025-02-18T08:36:47.323967" elapsed="5.925099"/>
+</suite>
+<doc>Metadata for Test Suite</doc>
+<meta name="architecture">('64bit', 'ELF')</meta>
+<meta name="ci run">true</meta>
+<meta name="PLATFORM SYSTEM">Linux</meta>
+<meta name="PLATFORM VERSION">#25-Ubuntu SMP Wed Jan 15 20:45:09 UTC 2025</meta>
+<meta name="python-version">3.12.3</meta>
+<meta name="USERNAME">runner</meta>
+<status status="PASS" start="2025-02-18T08:36:47.301638" elapsed="5.954042"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">color</stat>
+<stat pass="1" fail="0" skip="0">functional</stat>
+<stat pass="1" fail="0" skip="0">header</stat>
+<stat pass="2" fail="0" skip="0">regression</stat>
+<stat pass="1" fail="0" skip="0">title</stat>
+</tag>
+<suite>
+<stat name="My RobotCode Example Tests" id="s1" pass="9" fail="0" skip="0">My RobotCode Example Tests</stat>
+<stat name="01 Simple" id="s1-s1" pass="3" fail="0" skip="0">My RobotCode Example Tests.01 Simple</stat>
+<stat name="Test" id="s1-s1-s1" pass="3" fail="0" skip="0">My RobotCode Example Tests.01 Simple.Test</stat>
+<stat name="02 Web App" id="s1-s2" pass="6" fail="0" skip="0">My RobotCode Example Tests.02 Web App</stat>
+<stat name="Browser" id="s1-s2-s1" pass="6" fail="0" skip="0">My RobotCode Example Tests.02 Web App.Browser</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
